@@ -21,8 +21,8 @@ public class LocationsCMD implements CommandExecutor, TabCompleter {
 
         if(sender instanceof Player){
             Player p = (Player)sender;
-            if(!p.hasPermission("tmb.command.locations")){
-                p.sendMessage(LobbySystem.getPrefix() + "§7Dir fehlt folgende Permission: §6" + "tmb.command.locations");
+            if(!p.hasPermission("ub.command.locations")){
+                p.sendMessage(LobbySystem.getPrefix() + "§7Dir fehlt folgende Permission: §6" + "ub.command.locations");
                 return true;
             }
 

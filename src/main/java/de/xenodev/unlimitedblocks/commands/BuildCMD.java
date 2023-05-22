@@ -5,17 +5,21 @@ import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class BuildCMD implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BuildCMD implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(sender instanceof Player){
             Player p = (Player)sender;
-            if(!p.hasPermission("tmb.command.build")){
-                p.sendMessage(LobbySystem.getPrefix() + "§7Dir fehlt folgende Permission: §6" + "tmb.command.build");
+            if(!p.hasPermission("ub.command.build")){
+                p.sendMessage(LobbySystem.getPrefix() + "§7Dir fehlt folgende Permission: §6" + "ub.command.build");
                 return true;
             }
 
@@ -34,4 +38,11 @@ public class BuildCMD implements CommandExecutor {
 
         return false;
     }
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        return arrayList;
+    }
+
 }

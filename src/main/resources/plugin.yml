@@ -1,0 +1,19 @@
+name: LobbySystem
+version: '${project.version}'
+main: de.xenodev.unlimitedblocks.LobbySystem
+api-version: 1.19
+softdepend:
+  - UnlimitedBlocksAPI
+
+commands:
+  build:
+    description: Gehe in den Baumodus
+  locations:
+    description: Setzte verschiedene Locations
+
+permissions:
+  ub.command.*:
+    description: Pack für Permissions aller Commands
+    children:
+      ub.command.build: true
+      ub.command.locations: true

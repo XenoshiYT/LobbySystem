@@ -22,6 +22,8 @@ public class JoinEvent implements Listener {
             p.teleport(LobbySystem.getInstance().getConfig().getLocation("Locations.Spawn"));
         }
 
+        e.setJoinMessage("");
+
         ScoreboardManager.setScoreboard(p);
 
         p.setGameMode(GameMode.ADVENTURE);
