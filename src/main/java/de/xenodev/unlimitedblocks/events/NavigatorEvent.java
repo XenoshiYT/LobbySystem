@@ -1,7 +1,5 @@
 package de.xenodev.unlimitedblocks.events;
 
-import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import de.xenodev.unlimitedblocks.LobbySystem;
 import de.xenodev.unlimitedblocks.utils.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -53,7 +51,7 @@ public class NavigatorEvent implements Listener {
                             for (int i = 27; i < 36; i++) {
                                 navigatorInventory.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                             }
-                            navigatorInventory.setItem(28, new ItemBuilder(Material.NETHERITE_SWORD).setName("§7» §4§lXenoverse #1 §7«").build());
+                            navigatorInventory.setItem(28, new ItemBuilder(Material.NETHERITE_SWORD).setName("§7» §4§lXero Season 1 §7«").build());
                             navigatorInventory.setItem(30, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §3SkyPvP §7«").build());
                             navigatorInventory.setItem(32, new ItemBuilder(Material.BARRIER).setName("§7» §cServer 4 §7«").build());
                             navigatorInventory.setItem(34, new ItemBuilder(Material.BARRIER).setName("§7» §cServer 5 §7«").build());
@@ -92,8 +90,7 @@ public class NavigatorEvent implements Listener {
             if(e.getCurrentItem().getType().equals(Material.BARRIER)){
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 100, 1f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6CityBuild §7«")){
-                IPlayerManager player = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
-                player.getPlayerExecutor(p.getUniqueId()).connect("citybuild-1");
+
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Spawn §7«")){
                 if(LobbySystem.getInstance().getConfig().get("Locations.Spawn") == null){
                     if(p.hasPermission("ub.join.admin")) {
@@ -103,11 +100,9 @@ public class NavigatorEvent implements Listener {
                     p.teleport(LobbySystem.getInstance().getConfig().getLocation("Locations.Spawn"));
                 }
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §4§lXenoverse #1 §7«")){
-                IPlayerManager player = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
-                player.getPlayerExecutor(p.getUniqueId()).connect("xenoverse-1");
+
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §3SkyPvP §7«")){
-                IPlayerManager player = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
-                player.getPlayerExecutor(p.getUniqueId()).connect("skypvp-1");
+
             }
         }
     }

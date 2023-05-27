@@ -3,6 +3,7 @@ package de.xenodev.unlimitedblocks;
 import de.xenodev.unlimitedblocks.commands.BuildCMD;
 import de.xenodev.unlimitedblocks.commands.LocationsCMD;
 import de.xenodev.unlimitedblocks.events.*;
+import de.xenodev.unlimitedblocks.mysql.MySQL;
 import de.xenodev.unlimitedblocks.utils.ScoreboardManager;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -15,10 +16,12 @@ public class LobbySystem extends JavaPlugin {
     private static LobbySystem instance;
     private static String prefix = "§e§lUnlimitedBlocks §8| ";
     private static ArrayList<Player> buildArray = new ArrayList<>();
+    public static MySQL mysql;
 
     @Override
     public void onEnable() {
         instance = this;
+        ConnectMySQL();
 
         events(getServer().getPluginManager());
         commands();
@@ -31,9 +34,15 @@ public class LobbySystem extends JavaPlugin {
         return buildArray;
     }
 
+
     @Override
     public void onDisable() {
+        mysql.close();
+    }
 
+    private void ConnectMySQL(){
+        mysql = new MySQL("localhost", "unlimitedblocks", "unlimitedblocks", "[9j0pMyKvm5TLD_E]");
+        mysql.update("CREATE TABLE IF NOT EXISTS Time(UUID VARCHAR(100),HOURS BIGINT,MINUTES INT,SECONDS INT)");
     }
 
     private void commands(){
@@ -61,5 +70,4 @@ public class LobbySystem extends JavaPlugin {
     public static String getPrefix() {
         return prefix;
     }
-
 }
